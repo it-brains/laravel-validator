@@ -16,4 +16,13 @@ class ValidationServiceProvider extends ServiceProvider
     {
         NotEqualValidator::boot($this->app['validator']);
     }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+    }
 }
