@@ -1,0 +1,22 @@
+{
+    "name": "it-brains/laravel-validator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nikolay Zhidenko",
+            "email": "dragg.ko@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "ITBrains\\Validation\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": "^5.4"
+    }
+}
