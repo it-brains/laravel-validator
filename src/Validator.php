@@ -25,7 +25,7 @@ abstract class Validator implements ValidatorContract
     /**
      * @param Factory $validator
      */
-    final public static function boot(Factory $validator): void
+    final public static function boot(Factory $validator)
     {
         $name = self::getValidationRuleName();
 

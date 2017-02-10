@@ -33,6 +33,6 @@ interface Validator
      *
      * @param Factory $validator
      */
-    public static function boot(Factory $validator): void;
+    public static function boot(Factory $validator);
 
 }
