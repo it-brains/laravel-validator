@@ -1,5 +1,7 @@
 <?php
 
+namespace ITBrains\Validation;
+
 use Illuminate\Support\Str;
 
 class Helper
