@@ -40,7 +40,7 @@ class Helper
 
             $validationMessage = static::multiReplace($filedKey, $translatedAttribute, $message);
 
-            $attributes["$name.{$objectAttribute}"] = $validationMessage;
+            $attributes["{$name}.{$objectAttribute}"] = $validationMessage;
         }
 
         return $attributes;
@@ -78,7 +78,7 @@ class Helper
                 $validationMessage = static::multiReplace($fieldKey, $translatedAttribute, $message);
                 $validationMessage = static::multiReplace($indexKey, $numberString, $validationMessage);
 
-                $attributes["$name.{$number}.{$arrayAttribute}"] = $validationMessage;
+                $attributes["{$name}.{$number}.{$arrayAttribute}"] = $validationMessage;
             }
         }
 
@@ -115,7 +115,7 @@ class Helper
         $ucfirstField = Str::ucfirst($field);
 
         return str_replace(
-            [":$field", ":$upperField", ":$ucfirstField"],
+            [":{$field}", ":{$upperField}", ":{$ucfirstField}"],
             [$value, Str::upper($value), Str::ucfirst($value)],
             $phrase
         );
