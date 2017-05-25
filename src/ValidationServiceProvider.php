@@ -15,6 +15,12 @@ class ValidationServiceProvider extends ServiceProvider
     public function boot()
     {
         NotEqualValidator::boot($this->app['validator']);
+
+        $translationPath = __DIR__ . '/../resources/lang';
+        $this->loadTranslationsFrom($translationPath, 'it-brains');
+        $this->publishes([
+            $translationPath => resource_path('lang/vendor/it-brains'),
+        ], 'lang');
     }
 
     /**
