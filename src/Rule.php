@@ -18,7 +18,7 @@ class Rule extends \Illuminate\Validation\Rule
         /** @var Model $instance */
         $instance = (new $modelClass);
 
-        $uniqueRule = new \Illuminate\Validation\Rules\Unique($instance->getTable(), $column);
+        $uniqueRule = new \Illuminate\Validation\Rules\Unique(self::getConnectionAndTableOfInstance($instance), $column);
 
         if (in_array(\Illuminate\Database\Eloquent\SoftDeletes::class, class_uses($modelClass))) {
             $uniqueRule = $uniqueRule->whereNull($instance->getDeletedAtColumn());
@@ -37,12 +37,17 @@ class Rule extends \Illuminate\Validation\Rule
         /** @var Model $instance */
         $instance = new $modelClass;
 
-        $existsRule = static::exists($instance->getTable(), $column ?: $instance->getKeyName());
+        $existsRule = static::exists(self::getConnectionAndTableOfInstance($instance), $column ?: $instance->getKeyName());
 
         if (in_array(\Illuminate\Database\Eloquent\SoftDeletes::class, class_uses($modelClass))) {
             $existsRule = $existsRule->whereNull($instance->getDeletedAtColumn());
         }
 
         return $existsRule;
+    }
+
+    protected static function getConnectionAndTableOfInstance(Model $instance): string
+    {
+        return $instance->getConnectionName() . "." . $instance->getTable();
     }
 }
